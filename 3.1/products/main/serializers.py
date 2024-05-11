@@ -6,7 +6,7 @@ from main.models import Product, Review
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['product', 'text', 'mark', 'created_at']
+        fields = '__all__'
     # реализуйте все поля
 
 

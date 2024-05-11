@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from main.models import Product
+from main.models import Product, Review
 from main.serializers import ReviewSerializer, ProductListSerializer, ProductDetailsSerializer
 
 
@@ -35,4 +35,6 @@ class ProductFilteredReviews(APIView):
         реализуйте получение отзывов по конкретному товару с определённой оценкой
         реализуйте сериализацию полученных данных
         отдайте отсериализованные данные в Response"""
-        pass
+        products = Review.objects.filter(id=product_id)
+        ser = ReviewSerializer(products, many=True)
+        return Response(ser.data)

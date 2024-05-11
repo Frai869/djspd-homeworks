@@ -1,6 +1,5 @@
 from django.db import models
 
-
 VERY_BAD = 1
 BAD = 2
 SATISFACTORY = 3
@@ -30,3 +29,6 @@ class Review(models.Model):
     text = models.TextField()
     mark = models.PositiveSmallIntegerField(choices=MARK_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.text} {self.mark}'

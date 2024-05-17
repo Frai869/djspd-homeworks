@@ -17,8 +17,8 @@ class ProductListSerializer(serializers.Serializer):
 
 
 class ProductDetailsSerializer(serializers.ModelSerializer):
+    comments = ReviewSerializer(many=True, read_only=True)
     class Meta:
         model = Product
         fields = ['title', 'description', 'price', 'comments']
     # реализуйте поля title, description, price и reviews (список отзывов к товару)
-

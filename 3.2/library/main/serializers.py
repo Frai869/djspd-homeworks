@@ -4,7 +4,6 @@ from main.models import Book, Order
 
 
 class BookSerializer(serializers.ModelSerializer):
-    # реализуйте сериализацию объектов модели Book
     class Meta:
         model = Book
         fields = '__all__'
@@ -17,10 +16,10 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    # добавьте поля модели Order
+    books = BookSerializer(many=True, read_only=True)
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ['id', 'user_name', 'days_count', 'date', 'books']
 
 
     #доп задание

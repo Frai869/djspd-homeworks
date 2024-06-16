@@ -16,3 +16,5 @@ class Order(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name='Дата')
     books = models.ManyToManyField(Book)
 
+    def __str__(self):
+        return f'{self.user_name} - заказ от {self.date}'
